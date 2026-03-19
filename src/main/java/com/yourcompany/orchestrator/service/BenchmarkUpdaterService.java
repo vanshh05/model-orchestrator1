@@ -57,39 +57,32 @@ public class BenchmarkUpdaterService {
     }
 
     private double fetchBenchmarkScore(String modelName) {
-        try {
-            // HuggingFace model API returns model metadata including eval results
-            Map response = restClient.get()
-                    .uri("/models/" + modelName)
-                    .retrieve()
-                    .body(Map.class);
+    try {
+        Map response = restClient.get()
+                .uri("/models/" + modelName)
+                .retrieve()
+                .body(Map.class);
 
-            if (response == null) return 0.0;
+        if (response == null) return 0.0;
 
-            // Extract eval results if available
-            List<Map> evalResults = (List<Map>) response.get("cardData");
-            if (evalResults == null) {
-                // Fallback: use model downloads/likes as a popularity proxy score (normalized)
-                Object downloads = response.get("downloads");
-                Object likes = response.get("likes");
+        // Use downloads + likes as popularity proxy score
+        Object downloads = response.get("downloads");
+        Object likes = response.get("likes");
 
-                double downloadScore = downloads != null
-                        ? Math.min(((Number) downloads).doubleValue() / 1_000_000.0 * 50, 50)
-                        : 0;
-                double likeScore = likes != null
-                        ? Math.min(((Number) likes).doubleValue() / 10_000.0 * 50, 50)
-                        : 0;
+        double downloadScore = downloads != null
+                ? Math.min(((Number) downloads).doubleValue() / 1_000_000.0 * 50, 50)
+                : 0;
+        double likeScore = likes != null
+                ? Math.min(((Number) likes).doubleValue() / 10_000.0 * 50, 50)
+                : 0;
 
-                return downloadScore + likeScore;
-            }
+        return downloadScore + likeScore;
 
-            return 0.0;
-
-        } catch (Exception e) {
-            System.err.println("[BenchmarkUpdater] API error for " + modelName + ": " + e.getMessage());
-            return 0.0;
-        }
+    } catch (Exception e) {
+        System.err.println("[BenchmarkUpdater] API error for " + modelName + ": " + e.getMessage());
+        return 0.0;
     }
+}
 
     private void updateExternalScore(String modelName, double externalScore) {
         List<ModelRule> rules = ruleRepository.findAll().stream()

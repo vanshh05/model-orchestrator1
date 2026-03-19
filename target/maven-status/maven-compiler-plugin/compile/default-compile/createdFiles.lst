@@ -1,0 +1,15 @@
+com\yourcompany\orchestrator\provider\HuggingFaceProvider.class
+com\yourcompany\orchestrator\core\ModelRule.class
+com\yourcompany\orchestrator\service\RuleEngine.class
+com\yourcompany\orchestrator\provider\AIProvider.class
+com\yourcompany\orchestrator\controller\OrchestratorController.class
+com\yourcompany\orchestrator\ModelOrchestratorApplication.class
+com\yourcompany\orchestrator\repository\ModelRuleRepository.class
+com\yourcompany\orchestrator\core\AIResponse.class
+com\yourcompany\orchestrator\core\ModelConfig.class
+com\yourcompany\orchestrator\routing\ModelRouter.class
+com\yourcompany\orchestrator\provider\OpenAIProvider.class
+com\yourcompany\orchestrator\core\TaskType.class
+com\yourcompany\orchestrator\analyzer\PromptAnalyzer.class
+com\yourcompany\orchestrator\core\AIRequest.class
+com\yourcompany\orchestrator\service\OrchestrationService.class

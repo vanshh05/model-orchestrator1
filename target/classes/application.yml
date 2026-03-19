@@ -1,0 +1,23 @@
+server:
+  port: 9090
+
+spring:
+  datasource:
+    url: jdbc:postgresql://aws-1-ap-southeast-2.pooler.supabase.com:6543/postgres?sslmode=require
+    username: postgres.jbpllpuopjseheqeqphj
+    password: v@nshngarg2005
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+huggingface:
+  api:
+    token: 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
+    base-url: https://router.huggingface.co/v1
+    

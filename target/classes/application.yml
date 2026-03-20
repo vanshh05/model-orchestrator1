@@ -21,3 +21,9 @@ huggingface:
     token: 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
     base-url: https://router.huggingface.co/v1
     
+groq:
+  api:
+    token: ${GROQ_TOKEN}
+    base-url: https://api.groq.com/openai/v1
+    chat-model: llama-3.3-70b-versatile
+    code-model: deepseek-r1-distill-llama-70b

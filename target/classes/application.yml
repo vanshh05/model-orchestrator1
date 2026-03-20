@@ -23,7 +23,7 @@ huggingface:
     
 groq:
   api:
-    token: ${GROQ_TOKEN}
+    token: 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
     base-url: https://api.groq.com/openai/v1
     chat-model: llama-3.3-70b-versatile
-    code-model: deepseek-r1-distill-llama-70b
+    code-model: llama-3.3-70b-versatile
